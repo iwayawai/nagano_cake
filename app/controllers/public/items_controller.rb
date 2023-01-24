@@ -1,11 +1,18 @@
 class Public::ItemsController < ApplicationController
-  belongs_to :genre
-  has_many :order_items, dependent: :destroy
-  has_many :cart_items, dependent: :destroy
-  
   def new
     @item=Item.new
     @genres=Genre.all
+  end
+  
+  def create
+  　@item=Item.new(item_params)
+  　@item.save
+  redirect_to admin_items_path
+  end 
+  
+  def index
+    @items=Item.all
+    
   end 
   
   private
