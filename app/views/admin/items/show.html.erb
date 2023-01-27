@@ -17,7 +17,7 @@
 (<%= @item.price.to_s(:delimited) %>)円
 
 <h4>販売ステータス</h4>
-<%= @item.is_active %>
+<%= @item.is_active ? '販売中':'販売停止中' %>
 
 <%= link_to edit_admin_item_path do %>
 編集する

@@ -22,7 +22,7 @@
 <%= @customer.email %>
 
 <h4>会員ステータス</h4>
-<%= @customer.is_deleted %>
+<%= @customer.is_deleted ? '有効':'退会' %>
 
 <%= link_to edit_admin_customer_path(@customer.id) do %>
 編集する

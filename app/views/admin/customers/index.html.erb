@@ -7,7 +7,9 @@
 <% @customers.each do |customer| %>
 
 <%= customer.id %>
+<%= link_to admin_customer_path(customer.id) do %>
 <%= customer.last_name %>
+<% end %>
 <%= customer.first_name %>
 <%= customer.email %>
 <%= customer.is_deleted ? '有効':'退会' %>

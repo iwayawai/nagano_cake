@@ -8,7 +8,9 @@
 
 <% @items.each do |item| %>
 <%= item.id %>
+<%= link_to admin_item_path(item.id) do %>
 <%= item.name %>
+<% end %>
 <%= item.price %>
 <%= item.genre.name %>
 <%= item.is_active ? '販売中':'販売停止中' %>

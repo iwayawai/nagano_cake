@@ -2,14 +2,14 @@
 <h4>購入日時</h4>
 <h4>購入者</h4>
 <h4>注文個数</h4>
-<h4>注文ステータス</h4>
 
 <% @orders.each do |order| %>
 
+<%= link_to admin_order_path(order.id) do %>
 <%= order.created_at %>
-<%= order.name %>
+<% end %>
 
-<%= order.status %>
+<%= order.name %>
 
 <% end %>
 
