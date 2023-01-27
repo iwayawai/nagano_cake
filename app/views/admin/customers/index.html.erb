@@ -10,7 +10,7 @@
 <%= customer.last_name %>
 <%= customer.first_name %>
 <%= customer.email %>
-<%= customer.is_deleted %>
+<%= customer.is_deleted ? '有効':'退会' %>
 
 <% end %>
 <%= paginate @customers %>
