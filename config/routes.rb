@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  
+
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
    scope module: :public do
-     
+
   root to:"homes#top"
   get "/about"=>"homes#about", as:"about"
 
@@ -15,29 +15,29 @@ Rails.application.routes.draw do
       collection do
         get'unsubscribe'
         patch 'withdraw'
-      end 
-    end 
-      
+      end
+    end
+
     resources :cart_items,only: [:index,:update,:destroy,:create] do
       collection do
         delete'destroy_all'
-      end 
-    end 
-    
+      end
+    end
+
     resources :orders,only: [:new,:create,:index,:show] do
       collection do
         post'confirm'
         get'complete'
-      end 
-    end 
-    
+      end
+    end
+
     resources :addresses,only: [:index,:edit,:create,:update,:destroy]
-  end 
-  
+  end
+
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
+
    namespace :admin do
     root to:"homes#top"
     resources :items
@@ -45,6 +45,6 @@ Rails.application.routes.draw do
     resources :customers,only: [:index,:show,:edit,:update]
     resources :orders,only: [:show,:update]
     resources :order_details,only: [:update]
-  end 
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
