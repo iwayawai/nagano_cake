@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root to:"homes#top"
   get "/about"=>"homes#about", as:"about"
 
-    resources :items,only: [:index,:show]
+    resources :items,only: [:index,:show,:edit]
     resource :customers,only: [:show,:edit,:update] do
       collection do
         get'unsubscribe'
