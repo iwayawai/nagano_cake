@@ -8,8 +8,10 @@
 <%= link_to admin_order_path(order.id) do %>
 <%= order.created_at %>
 <% end %>
-
 <%= order.name %>
-
 <% end %>
 
+<%= @order.order_items.each do |order_item| %>
+
+<%= order_item.amount %>
+<% end %>
