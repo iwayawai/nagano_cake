@@ -5,8 +5,11 @@
     
 <h1>新着商品</h1>
 
-<h4></h4>
-<h4></h4>
+<% @items.each do |item| %>
+<%= image_tag item.get_image,size:"5,5" %>
+<%= item.name %>
+<%= item.add_tax_price.to_s(:delimited) %> 円
+<% end %>
 
 <%= link_to items_path do %>
 全ての商品を見る＞
