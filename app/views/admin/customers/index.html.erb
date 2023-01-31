@@ -8,11 +8,10 @@
 
 <%= customer.id %>
 <%= link_to admin_customer_path(customer.id) do %>
-<%= customer.last_name %>
+<%= customer.last_name %><%= customer.first_name %>
 <% end %>
-<%= customer.first_name %>
 <%= customer.email %>
-<%= customer.is_deleted ? '有効':'退会' %>
+<%= customer.is_deleted ? '退会':'有効' %>
 
 <% end %>
 <%= paginate @customers %>

@@ -22,12 +22,12 @@
 <%= @customer.email %>
 
 <h4>会員ステータス</h4>
-<%= @customer.is_deleted ? '有効':'退会' %>
+<%= @customer.is_deleted ? '退会':'有効' %>
 
 <%= link_to edit_admin_customer_path(@customer.id) do %>
 編集する
 <% end %>
 
-<%= link_to admin_orders_path do %>
+<%= link_to admin_root_path do %>
 注文履歴一覧を見る
 <% end %>
