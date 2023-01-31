@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :items,only: [:index,:show,:edit]
     resource :customers,only: [:show,:edit,:update] do
       collection do
+        get'/mypage' =>"customers#show"
+        get'/information/edit' =>"customers#edit"
+        patch'/information' =>"customers#update"
         get'unsubscribe'
         patch 'withdraw'
       end
