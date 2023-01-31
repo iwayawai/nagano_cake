@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 2023_01_23_122053) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "name"
-    t.string "postal_code"
-    t.string "address"
+    t.integer "customer_id",default: "", null: false
+    t.string "name",default: "", null: false
+    t.string "postal_code",default: "", null: false
+    t.string "address",default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2023_01_23_122053) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "customer_id"
-    t.integer "amount"
+    t.integer "item_id",default: "", null: false
+    t.integer "customer_id",default: "", null: false
+    t.integer "amount",default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -90,40 +90,40 @@ ActiveRecord::Schema.define(version: 2023_01_23_122053) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string "name",default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.integer "price"
-    t.boolean "is_active"
+    t.integer "genre_id",default: "", null: false
+    t.string "name",default: "", null: false
+    t.text "introduction",default: "", null: false
+    t.integer "price",default: "", null: false
+    t.boolean "is_active",default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "order_id"
-    t.integer "amount"
-    t.integer "price"
-    t.integer "making_status"
+    t.integer "item_id",default: "", null: false
+    t.integer "order_id",default: "", null: false
+    t.integer "amount",default: "", null: false
+    t.integer "price",default: "", null: false
+    t.integer "making_status",default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "postal_code"
-    t.string "address"
-    t.string "name"
-    t.integer "payment_method"
-    t.integer "total_payment"
-    t.integer "shipping_cost"
-    t.integer "status"
+    t.integer "customer_id",default: "", null: false
+    t.string "postal_code",default: "", null: false
+    t.string "address",default: "", null: false
+    t.string "name",default: "", null: false
+    t.integer "payment_method",default: 0, null: false
+    t.integer "total_payment",default: "", null: false
+    t.integer "shipping_cost",default: 800, null: false
+    t.integer "status",default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

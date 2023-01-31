@@ -3,30 +3,35 @@
 <%= @order.customer.last_name %><%= @order.customer.first_name %>
 
 <h4>注文日</h4>
-<%= @order.created_at %>
+<%= @order.created_at.strftime('%Y/%m/%d') %>
 
 <h4>配送先</h4>
 <%= @order.address %><%= @order.name %>
 
 <h4>支払方法</h4>
-<%= @order.payment_method %>
+<%= @order.payment_method ? 'クレジットカード':'銀行振込' %>
 
 <h4>注文ステータス</h4>
 <%= @order.status %>
+<%= f.select :status,Order.statuses.map{|k| [t("enum.order.status.#{k}"), k},{selected:0} %>
 
 <%= @order.order_items.each do |order_item| %>
 
 <h4>商品名</h4>
 <%= order_item.items.name %>
 <h4>単価(税込)</h4>
-<%= order_item.price %>
+<%= order_item.add_tax_price.to_s(:delimited) %>
 <h4>数量</h4>
 <%= order_item.amount %>
 <h4>小計</h4>
-
+<%= sum_of_price.to_s(:delimited) %>
 <h4>製作ステータス</h4>
-<%= order_item.making_status %>
+<%= order_item.making_status ? '製作不可':'製作待ち':'製作中':'製作完了' %>
+
 
 <h2>商品合計</h2>
+<%= @total.round.to_s(:delimited)%>円
 <h2>送料</h2>
+<%= @order.shipping_cost %>円
 <h2>請求額合計</h2>
+<%= %>円
