@@ -16,8 +16,8 @@ Rails.application.routes.draw do
         get'/mypage' =>"customers#show"
         get'/information/edit' =>"customers#edit"
         patch'/information' =>"customers#update"
-        get'unsubscribe'
-        patch 'withdraw'
+        get'unsubscribe' =>"customers#unsubscribe"
+        patch 'withdraw'=>"customers#withdraw"
       end
     end
 
