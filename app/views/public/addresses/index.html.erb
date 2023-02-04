@@ -21,11 +21,11 @@
 <h4>宛名</h4>
 <%= address.name %>
 
-<%= link_to edit_address_path do %>
+<%= link_to edit_address_path(address.id) do %>
 編集する
 <% end %>
 
-<%= link_to address_path do %>
+<%= link_to address_path(address.id) do %>
 削除する
 <% end %>
 
