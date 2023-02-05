@@ -1,0 +1,21 @@
+<h2>ショッピングカート</h2>
+<%= link_to destroy_all_cart_items_path do %>
+カートを空にする
+<% end %>
+
+<h3>商品名</h3>
+<h3>単価</h3>
+<h3>数量</h3>
+<h3>小計</h3>
+
+<% @cart_items.items.each do |item| %>
+
+<%= item.name %>
+<%= item.add_tax_price.to_s(:delimited) %>
+
+<% end %>
+
+<% @cart_items.each do |cart_item| %>
+<%= cart_item.amount %>
+<%= sum_of_price.to_s(:delimited) %>
+
