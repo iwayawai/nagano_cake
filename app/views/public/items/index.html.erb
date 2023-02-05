@@ -1,0 +1,13 @@
+<h2>商品一覧(全 件)</h2>
+
+<% @items.each do |item| %>
+
+<%= link_to item_path(item.id) do %>
+<%= image_tag item.get_image,size:"20,20" %>
+<% end %>
+<h4><%= item.name %></h4>
+<h4>￥<%= item.add_tax_price.to_s(:delimited) %></h4>
+
+<% end %>
+
+<%= paginate @items %>
