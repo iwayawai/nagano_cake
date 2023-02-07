@@ -1,5 +1,6 @@
 <% if customer_signed_in? %>
 
+<h3>ようこそ、<%= current_customer.last_name %>さん！</h3>
 <%= link_to mypage_customers_path do %>
 マイページ
 <% end %>
