@@ -29,7 +29,7 @@
 </table>
 
 <h3>合計金額</h3>
-<% total += subtotal %>
+<%= @total.round.to_s(:delimited) %>
 
 <%= link_to "削除する",cart_item_path(cart_item.id), method: :delete %>
 

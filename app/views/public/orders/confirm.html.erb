@@ -1,0 +1,30 @@
+<h3>注文情報確認</h3>
+
+<h4>商品名</h4>
+<h4>単価(税込)</h4>
+<h4>数量</h4>
+<h4>小計</h4>
+
+<% @cart_items.each do |cart_item| %>
+<%= image_tag cart_item.item.get_image,size:"20,20" %>
+<%= cart_item.item.name %>
+<%= cart_item.item.add_tax_price.to_s(:delimited)  %>
+<%= cart_item.amount %>
+<%= cart_item.sum_of_price.to_s(:delimited) %>
+
+<% end %>
+
+<h4>送料</h4>
+<%= @order.shipping_cost %>
+<h4>商品合計</h4>
+<%= @total.round.to_s(:delimited) %>
+<h4>請求金額</h4>
+
+
+
+<h4>支払方法</h4>
+<%= @order.payment_method %>
+<h4>お届け先</h4>
+<%= @order.postal_code %>
+<%= @order.address %>
+<%= @order.name %>
