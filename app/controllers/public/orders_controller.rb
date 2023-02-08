@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
   
  def new
   @order=Order.new
+  @addresses=current_customer.addresses.all
  end
  
  def create
@@ -9,6 +10,17 @@ class Public::OrdersController < ApplicationController
   @order= current_customer.orders.new(order_params)
   @order.member_id = current_member.id
   @order.save
+  
+  current_member.cart_items.each do |cart_item|
+  @order_item=OrderItem.new
+  @order_item.order_id=@order.id
+  @order_item.item_id=cart_item.item_id
+  @order_item.amount=cart_item.amount
+  @order_item.price=cart_item.price
+  @order_item.save
+ end 
+ current_customer.cart_item.destroy_all
+ redirect_to complete_orders_path
  end 
   
  def confirm
@@ -36,11 +48,11 @@ class Public::OrdersController < ApplicationController
 
  end
   
-   @cart_items = current_member.cart_items.all
-   @order.member_id = current_member.id
+   @cart_items = current_customer.cart_items.all
    @total = @cart_items.inject(0) {|sum,item| sum + item.sum_of_price }
-  end 
+end 
 
+ 
  
  private
   def order_params
