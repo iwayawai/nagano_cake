@@ -47,10 +47,15 @@ class Public::OrdersController < ApplicationController
   
    @cart_items =current_customer.cart_items.all
    @total = @cart_items.inject(0) {|sum,item| sum + item.sum_of_price }
-  end 
+ end 
 
  def index
-  @order_items=Order.all
+  @orders=Order.page(params[:page])
+ end 
+ 
+ def show
+  @order=Order.find(params[:id])
+  @order_items=Order_item.all
  end 
  
  
@@ -58,6 +63,6 @@ class Public::OrdersController < ApplicationController
   def order_params
   params.require(:order).permit(:customer_id,:postal_code,:address,:name,:payment_method,:total_payment,:shipping_cost,:status)
   end 
- end
+end
  
 

@@ -43,4 +43,4 @@
 <h2>送料</h2>
 <%= @order.shipping_cost %>円
 <h2>請求額合計</h2>
-<%= @total+@order.shipping_cost %>円
+<%= @total+@order.shipping_cost.to_s(:delimited) %>円

@@ -6,9 +6,9 @@ class Order < ApplicationRecord
   enum status:{ waiting_for_payment: 0, payment_confirmation:1, in_production:2, preparing_to_ship:3, sent:4 }
   
   def add_tax_price
-    (self.price * 1.1).round
-  end
-  
+  (self.price * 1.1).round
+  end 
+
   def sum_of_price
       item.add_tax_price*amount
   end

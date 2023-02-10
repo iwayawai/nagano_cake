@@ -1,1 +1,35 @@
+<%= render 'public/public' %>
 <h3>注文履歴詳細</h3>
+
+<h4>注文情報</h4>
+<h4>注文日</h4>
+<%= @order.created_at.strftime('%Y/%m/%d') %>
+<h4>配送先</h4>
+<%= @order.address %>
+<h4>支払方法</h4>
+<%= @order.payment_method %>
+<h4>ステータス</h4>
+<%= @order.status %>
+
+
+<h4>請求情報</h4>
+<h4>商品合計</h4>
+<%= @order.total_payment.to_s(:delimited) %>
+<h4>配送料</h4>
+<%= @order.shipping_cost %>
+<h4>ご請求額</h4>
+<%= @order.total_payment + @order.shipping_cost.to_s(:delimited) %>
+
+
+<h4>注文内容</h4>
+<h4>商品</h4>
+<h4>単価(税込)</h4>
+<h4>個数</h4>
+<h4>小計</h4>
+
+<%= @order_items.each do |order_item| %>
+<%= order_item.item.name %>
+<%= order_item.add_tax_price.to_s(:delimited) %>
+<%= order_item.amount %>
+<%= order_item.sum_of_price.to_s(:delimited) %>
+<% end %>
