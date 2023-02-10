@@ -9,11 +9,7 @@
 <%= order.created_at %>
 <% end %>
 <%= order.name %>
-<% end %>
-
-<%= @order.order_items.each do |order_item| %>
-
-<%= order_item.amount %>
+<%= order.order_item.amount %>
 <% end %>
 
 <%= paginate @orders %>

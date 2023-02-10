@@ -1,4 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
 <%= render 'public/public' %>
+</div>
+    <div class="col-md-9" >
 <h2>商品一覧(全<%= @items.count %>件)</h2>
 
 <% @items.each do |item| %>
@@ -10,5 +15,9 @@
 <h4>￥<%= item.add_tax_price.to_s(:delimited) %></h4>
 
 <% end %>
+</div>
 
 <%= paginate @items %>
+</div>
+ </div>
+  </div>

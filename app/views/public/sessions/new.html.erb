@@ -1,6 +1,8 @@
 <%= render 'public/public' %>
+<div class="container">
+  <div class="col">
 <h2>ログイン</h2>
-<h4>会員の方はこちらからログイン</h4>
+<h6>会員の方はこちらからログイン</h6>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -16,9 +18,11 @@
 
   <div class="actions">
     <%= f.submit "ログイン" %>
-  </div>
+  </div><br>
 <% end %>
 
-<h4>会員登録がお済みでない方</h4>
-<h4><a href="../customers/sign_up">こちら</a>
-から新規登録を行ってください。</h4>
+<h6>会員登録がお済みでない方</h6>
+<h6><a href="../customers/sign_up">こちら</a>
+から新規登録を行ってください。</h6>
+</div>
+</div>
