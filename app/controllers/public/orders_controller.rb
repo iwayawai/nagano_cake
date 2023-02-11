@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
   @order_item.price=cart_item.item.add_tax_price
   @order_item.save
  end 
- current_customer.cart_item.destroy_all
+ current_customer.cart_items.destroy_all
  redirect_to complete_orders_path
  end 
   
@@ -55,7 +55,7 @@ class Public::OrdersController < ApplicationController
  
  def show
   @order=Order.find(params[:id])
-  @order_items=Order_item.all
+  @order_items=OrderItem.all
  end 
  
  

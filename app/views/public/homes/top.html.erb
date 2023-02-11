@@ -1,8 +1,7 @@
 <%= render 'public/public' %>
 <div class="container">
- <div class="text-center">
   <div class="row">
-   <div class="col-lg-8">
+   <div class="mx-auto col-lg-8">
 <h4>ようこそ、ながのCAKEへ！<br>
     このサイトは、ケーキ販売のECサイトになります。<br>
     会員でない方も商品の閲覧はできますが、<br>
@@ -11,17 +10,17 @@
  </div>
  </div>
 
-    
-<h1>新着商品</h1>
-<div class="row">
-　<div class="col-lg-4">
+<div class="container">
+ <div class="row">
+  <h1>新着商品</h1>
+   <div class="mx-auto col-lg-8">
 <% @items.each do |item| %>
 <%= image_tag item.get_image,size:"5,5" %>
 <%= item.name %>
 <%= item.add_tax_price.to_s(:delimited) %> 円
 <% end %>
+   </div>
  </div>
-</div>
 </div>
 
 <%= link_to items_path do %>
