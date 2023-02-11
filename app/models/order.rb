@@ -5,13 +5,14 @@ class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status:{ waiting_for_payment: 0, payment_confirmation:1, in_production:2, preparing_to_ship:3, sent:4 }
   
-  def add_tax_price
-  (self.price * 1.1).round
+ 
+  def get_amount
+      amount=0
+      order_items.each do |order_item|
+      amount += order_item.amount
+    end 
+    amount
   end 
-
-  def sum_of_price
-      item.add_tax_price*amount
-  end
   
   def get_image
      unless image.attached?
