@@ -1,8 +1,11 @@
-<%= render 'public/public' %>
-<h2>ショッピングカート</h2>
-<%= link_to "カートを空にする",destroy_all_cart_items_path,method: :delete %>
+<div class="container">
+  <div class="row">
+  <h2>ショッピングカート</h2>
+  <div class="ml-auto">
+  <%= link_to "カートを空にする",destroy_all_cart_items_path,method: :delete,class: "btn btn-danger" %>
+  </div>
 
-<table>
+<table class="table table-striped">
     <thead>
 　　　<th>商品名</th>
 　　　<th>単価</th>
@@ -10,36 +13,44 @@
 　　　<th>小計</th>
 　　　<th></th>
     </thead>
-    　<tbody>
+
+    <tbody>
 <% @cart_items.each do |cart_item| %>
- <tr>
-<td><%= cart_item.item.name %></td>
-<td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+  <tr>
+    <td><%= image_tag cart_item.item.get_image(100,100) %></td>
+    <td><%= cart_item.item.name %></td>
+    <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
 
-<td>
-<%= form_with model: cart_item,url:cart_item_path(cart_item),method: :patch do |f| %>
-<%= f.select :amount, *[1..10] %>
-<%= f.submit "変更" %>
+    <td>
+    <%= form_with model: cart_item,url:cart_item_path(cart_item),method: :patch do |f| %>
+    <%= f.select :amount, *[1..10] %>
+    <%= f.submit "変更",class: "btn btn-success" %>
+    <% end %>
+    </td>
+
+    <td><%= cart_item.sum_of_price.to_s(:delimited) %></td>
+    <td><%= link_to "削除する",cart_item_path(cart_item.id), method: :delete,class: "btn btn-danger" %></td>
+  </tr>
 <% end %>
-</td>
-
-<td><%= cart_item.sum_of_price.to_s(:delimited) %></td>
-
-</tr>
-</tbody>
+   </tbody>
 </table>
+  </div>
 
-<h3>合計金額</h3>
-<%= @total.round.to_s(:delimited) %>
+  <div class="row">
+    <div class="col-lg-2">
+<%= link_to "買い物を続ける",root_path,class: "btn btn-primary" %>
+    </div>
+    <div class="col-lg-8"></div>
+    <div class="col-lg-2">
+<table class="table table--bordered border-primary">
+  <tbody>
+    <tr>
+      <th>合計金額</th>
+      <td><%= @total.round.to_s(:delimited) %></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+ </div>
 
-<%= link_to "削除する",cart_item_path(cart_item.id), method: :delete %>
-
-<% end %>
-
-<%= link_to root_path do %>
-買い物を続ける
-<% end %>
-
-<%= link_to new_order_path do %>
-情報入力に進む
-<% end %>
+<%= link_to "情報入力に進む",new_order_path,class: "btn btn-success" %>
