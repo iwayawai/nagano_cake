@@ -1,4 +1,3 @@
-<%= render 'public/public' %>
 <div class="container">
 <h3>注文情報確認</h3>
 <div class="row">
@@ -13,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-<% @cart_items.each do |cart_item| %>
+    <% @cart_items.each do |cart_item| %>
        <tr>
         <td><%= image_tag cart_item.item.get_image,size:"20,20" %></td>
         <td><%= cart_item.item.name %></td>
@@ -21,7 +20,7 @@
         <td><%= cart_item.amount %></td>
         <td><%= cart_item.sum_of_price.to_s(:delimited) %></td>
       </tr>
-<% end %>
+    <% end %>
      </tbody>
      </table>
      </div>

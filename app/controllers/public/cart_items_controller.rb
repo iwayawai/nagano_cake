@@ -35,7 +35,7 @@ class Public::CartItemsController < ApplicationController
   end
   
   def destroy_all
-   @cart_items=CartItems.all
+   @cart_items=CartItem.all
    cart_item.destroy_all
    render 'index'
   end 
