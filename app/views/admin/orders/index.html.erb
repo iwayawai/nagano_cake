@@ -1,15 +1,27 @@
-<h2>注文履歴一覧</h2>
-<h4>購入日時</h4>
-<h4>購入者</h4>
-<h4>注文個数</h4>
+<div class="container">
+  <div class="row">
+  <h3>注文履歴一覧</h3>
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr>
 
-<% @orders.each do |order| %>
-
-<%= link_to admin_order_path(order.id) do %>
-<%= order.created_at %>
-<% end %>
-<%= order.name %>
-<%= order.get_amount %>
-<% end %>
-
-<%= paginate @orders %>
+        <td><%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+            <% end %></td>
+        <td><%= order.name %></td>
+        <td><%= order.get_amount %></td>
+            <% end %>
+      </tbody>
+    </table>
+      <%= paginate @orders %>
+  </div>
+</div>
+      

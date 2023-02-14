@@ -1,20 +1,32 @@
-<%= render 'admin/admin' %>
-<h2>商品一覧</h2>
-
-<h4>商品ID</h4>
-<h4>商品名</h4>
-<h4>税抜価格</h4>
-<h4>ジャンル</h4>
-<h4>ステータス</h4>
-
-<% @items.each do |item| %>
-<%= item.id %>
-<%= link_to admin_item_path(item.id) do %>
-<%= item.name %>
-<% end %>
-<%= item.price.to_s(:delimited) %>
-<%= item.genre.name %>
-<%= item.is_active ? '販売中':'販売停止中' %>
-
-<% end %>
-<%= paginate @items %>
+<div class="container">
+  <div class="row">
+  <h2>商品一覧</h2>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to admin_item_path(item.id) do %>
+            <%= item.name %>
+            <% end %>
+        </td>
+        <td><%= item.price.to_s(:delimited) %></td>
+        <td><%= item.genre.name %></td>
+        <td><p class="<%= item.is_active ? "text-success" : "text-secondary" %>"><%= item.is_active ? '販売中':'販売停止中' %></p></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+    <%= paginate @items %>
+</div>

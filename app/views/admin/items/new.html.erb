@@ -1,24 +1,41 @@
-<%= render 'admin/admin' %>
-<h2>商品新規登録</h2>
+<div class="container">
+  <div class="row">
+  <h3>商品新規登録</h3>
+  </div>
 
-<%= form_with model: @item, url: admin_items_path,method: :post do |f| %>
-<h4>商品画像</h4>
-<%= f.file_field :image, accept:"image/*" %>
+  <%= form_with model: @item, url: admin_items_path,method: :post do |f| %>
+  <div class="row mt-3">
+  <h6>商品画像</h6>
+  <div style="padding-left: 32px;"><%= f.file_field :image, accept:"image/*" %></div>
+  </div>
 
-<h4>商品名</h4>
-<%= f.text_field :name %>
+  <div class="row mt-3">
+  <h6>商品名</h6>
+  <div style="padding-left: 47px;"><%= f.text_field :name %></div>
+  </div>
 
-<h4>商品説明</h4>
-<%= f.text_area :introduction %>
+  <div class="row mt-3">
+  <h6>商品説明</h6>
+  <div style="padding-left: 32px;"><%= f.text_area :introduction %></div>
+  </div>
 
-<h4>ジャンル</h4>
-<%= f.collection_select(:genre_id, @genres, :id, :name, {prompt:"選択してください"}) %>
+  <div class="row mt-3">
+  <h6>ジャンル</h6>
+  <div style="padding-left: 32px;"><%= f.collection_select(:genre_id, @genres, :id, :name, {prompt:"選択してください"}) %></div>
+  </div>
 
-<h4>税抜価格</h4>
-<%= f.number_field :price %>
+  <div class="row mt-3">
+  <h6>税抜価格</h6>
+  <div style="padding-left: 32px;"><%= f.number_field :price %></div>
+  </div>
 
-<h4>販売ステータス</h4>
-<%= f.radio_button :is_active, "販売中" %>販売中 <%=f.radio_button :is_active, "販売停止中" %>販売停止中
-
-<%= f.submit '新規登録' %>
-<% end %>
+  <div class="row mt-3">
+  <h6>販売ステータス</h6>
+  <div style="padding-left: 32px;"><%= f.radio_button :is_active, "販売中" %>販売中 <%=f.radio_button :is_active, "販売停止中" %>販売停止中</div>
+  </div>
+  
+  <div class="row mt-5">
+  <%= f.submit '新規登録',class:"btn btn-success" %>
+  </div>
+  <% end %>
+</div>
