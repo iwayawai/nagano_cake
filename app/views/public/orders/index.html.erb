@@ -22,9 +22,11 @@
         <br>
         <%= order.name %></td>
 
+       <td>
        <% order.order_items.each do |order_item| %>
-        <td><%= order_item.item.name %></td>
+       <%= order_item.item.name %>
        <% end %>
+       </td>
 
         <td><%= order.total_payment.to_s(:delimited) %></td>
         <td><%= order.status_i18n %></td>

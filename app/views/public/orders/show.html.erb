@@ -36,7 +36,7 @@
        <tbody>
          <tr>
            <td>商品合計</td>
-           <td><%= @order.total_payment.to_s(:delimited) %></td>
+           <td><%= @total.round.to_s(:delimited) %></td>
          </tr>
          <tr>
            <td>配送料</td>
@@ -44,7 +44,7 @@
          </tr>
          <tr>
            <td>ご請求額</td>
-           <td><%= (@order.total_payment + @order.shipping_cost).to_s(:delimited) %></td>
+           <td><%= (@total + @order.shipping_cost).to_s(:delimited) %></td>
          </tr>
        </tbody>
      </table>
@@ -64,14 +64,14 @@
         </tr>
        </thead>
        <tbody>
-       <% @order_items.each do |order_item| %>
-         <tr>
-           <td><%= order_item.item.name %></td>
-           <td><%= order_item.price.to_s(:delimited) %></td>
-           <td><%= order_item.amount %></td>
-           <td><%= order_item.sum_of_price.to_s(:delimited) %></td>
-         </tr>
-       <% end %>
+         <% @order.order_items.each do |order_item| %>
+           <tr>
+             <td><%= order_item.item.name %></td>
+             <td><%= order_item.price.to_s(:delimited) %></td>
+             <td><%= order_item.amount %></td>
+             <td><%= order_item.sum_of_price.to_s(:delimited) %></td>
+                 <% end %>
+           </tr>
        </tbody>
      </table>
    </div>

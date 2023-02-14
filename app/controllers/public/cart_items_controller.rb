@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   
   def index
    @cart_items=current_customer.cart_items.all
-   @total= @cart_items.inject(0){|sum, item| sum + item.sum_of_price }
+   @total= @cart_items.inject(0){|sum, item| sum + item.sum_of_price }.to_s(:delimited)
   end 
   
   def create
@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   
   def destroy_all
    @cart_items=CartItem.all
-   cart_item.destroy_all
+   @cart_items.destroy_all
    render 'index'
   end 
    
