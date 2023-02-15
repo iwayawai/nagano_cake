@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   
   def index
    @cart_items=current_customer.cart_items.all
-   @total= @cart_items.inject(0){|sum, item| sum + item.sum_of_price }.to_s(:delimited)
+   @total= @cart_items.inject(0){|sum, item| sum + item.sum_of_price }
   end 
   
   def create
@@ -15,9 +15,9 @@ class Public::CartItemsController < ApplicationController
      
    elsif @cart_item.save
        @cart_items=current_customer.cart_items.all
-       render 'index'
+       redirect_to cart_items_path
    else
-       render'index'
+       redirect_to cart_items_path
    end
    
   end 
