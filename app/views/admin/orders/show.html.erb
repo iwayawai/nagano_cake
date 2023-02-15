@@ -27,7 +27,7 @@
   <h6>注文ステータス</h6>
     <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
   <div style="padding-left:318px;">
-  <%= f.select :status,Order.statuses_i18n.invert,{selected:0} %>
+  <%= f.select :status,Order.statuses_i18n.invert %>
   <%= f.submit '更新',class:"btn btn-success" %></div>
     <% end %>
   </div>
@@ -54,7 +54,7 @@
       <tr>
         <th>製作ステータス</th>
             <%= form_with model: order_item, url:admin_order_item_path(order_item), method: :patch do |f| %>
-        <td><%= f.select :making_status,OrderItem.making_statuses_i18n.invert,{selected:0} %></td>
+        <td><%= f.select :making_status,OrderItem.making_statuses_i18n.invert %></td>
       </tr>
       <tr>
         <th></th>
